@@ -1,0 +1,119 @@
+# General / Operating System / IDE Files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+.Spotlight-V100
+.Trashes
+desktop.ini
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+.idea/
+.vscode/
+.project
+.classpath
+.settings/
+*.iml
+*.ipr
+*.iws
+*.sublime-project
+*.sublime-workspace
+.atom/
+.c9/
+.history/
+.cache/
+
+# Environment Variables
+.env
+.env.*
+*.env
+
+# --- Spring Boot (Java) Specific ---
+# Maven
+/target/
+pom.xml.tag
+pom.xml.bak
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+.apt_generated/
+.factorypath
+.springBeans
+
+# Gradle
+.gradle/
+/build/
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+hs_err_pid*.log
+
+# Eclipse
+.project
+.classpath
+.settings/
+*.launch
+.metadata
+
+# IntelliJ IDEA
+*.iml
+*.ipr
+*.iws
+.idea/
+out/
+
+# Other Java
+/bin/
+/tmp/
+/classes/
+# Log files
+*.log
+
+# --- React (JavaScript) Specific ---
+# Node modules
+/node_modules
+/npm-debug.log*
+/yarn-debug.log*
+/yarn-error.log*
+/lerna-debug.log*
+.pnpm-debug.log*
+
+# Build output
+/build/
+/dist/
+/out/
+.parcel-cache/
+.next/ # Next.js build output
+.nuxt/ # Nuxt.js build output
+.vuepress/dist/ # VuePress build output
+.sapphire/ # Sapphire files
+.svelte-kit/ # SvelteKit build output
+.vite/ # Vite build output
+.astro/ # Astro build output
+.vercel/
+.netlify/
+.serverless/
+.aws-sam/
+
+# Testing
+/coverage/
+.nyc_output/
+*.lcov
+
+# Other JavaScript/TypeScript
+.eslintcache
+.stylelintcache
+.fusebox/
+.sass-cache/
+.webpack/
+.rollup.cache/
+npm-shrinkwrap.json
+yarn.lock
