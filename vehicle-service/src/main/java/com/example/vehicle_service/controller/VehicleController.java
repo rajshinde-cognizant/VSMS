@@ -39,10 +39,8 @@ public class VehicleController {
         return ResponseEntity.ok(service.save(dto, email));
     }
  
-    @GetMapping
-    @PreAuthorize("hasAnyAuthority('CUSTOMER','ADMIN')")
-    public ResponseEntity<List<VehicleResponse>> getAll(@RequestHeader("Authorization") String auth) {
-        String email = extractEmail(auth);
+    @GetMapping("/getAll")
+    public ResponseEntity<List<VehicleResponse>> getAll(@RequestParam("email") String email) {
         return ResponseEntity.ok(service.getByUser(email));
     }
  

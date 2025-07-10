@@ -9,9 +9,10 @@ import lombok.Data;
 @Builder
 public class BookingResponse {
     private Long id;
-    private Long userId;
+    private String userEmail;
     private Long vehicleId;
     private Long serviceCenterId;
+    private Long serviceTypeId;
     private LocalDate bookingDate;
     private String status;
     private UserResponse user; // Add this field

@@ -54,8 +54,8 @@ public class UserController {
     }
 
     // ✅ Admin: Get any user by email
-    @GetMapping
-    public ResponseEntity<User> getUserByEmail(@RequestParam String email) {
+    @GetMapping("/search")
+    public ResponseEntity<User> getUserByEmail(@RequestParam("email") String email) {
         return ResponseEntity.ok(userService.getByEmail(email));
     }
 

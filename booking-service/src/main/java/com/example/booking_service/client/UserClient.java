@@ -16,7 +16,7 @@ public interface UserClient {
     @GetMapping("/api/users/{id}")
     UserResponse getUserById(@PathVariable("id") Long id);
 
-    @GetMapping("/api/users")
+    @GetMapping("/api/users/search")
     UserResponse getUserByEmail(@RequestParam("email") String email);
 
     // If you need all users (e.g., for admin features within booking service)

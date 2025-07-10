@@ -23,7 +23,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
             .authorizeHttpRequests(auth -> auth
-            .requestMatchers("/swagger-ui/**", "/v3/api-docs/**","/api/bookings","/api/bookings/user","/api/bookings/{id}").permitAll()
+            .requestMatchers("/swagger-ui/**", "/v3/api-docs/**","/api/bookings","/api/bookings/user/search","/api/bookings/{id}").permitAll()
             .anyRequest().authenticated()
             .and()
             .addFilterBefore(new JwtFilter(jwtUtil), UsernamePasswordAuthenticationFilter.class)

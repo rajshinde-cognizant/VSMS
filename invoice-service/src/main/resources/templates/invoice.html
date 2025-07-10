@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Invoice</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+            line-height: 1.8; /* Increased line height for readability */
+            color: #444; /* Softer black */
+            margin: 0;
+            padding: 10px;
+            background-color: #f0f2f5; /* Light gray background */
+        }
+        .container {
+            max-width: 850px; /* Slightly wider container */
+            margin: 30px auto; /* More margin */
+            background: #fff;
+            padding: 40px; /* More padding */
+            border-radius: 12px; /* More rounded corners */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Softer, larger shadow */
+        }
+        h1, h2, h3 {
+            color: #2c3e50; /* Darker, professional blue/gray */
+            border-bottom: none; /* Remove default border */
+            position: relative;
+        }
+        h1 {
+            font-size: 42px; /* Larger main title */
+            font-weight: 700;
+            color: #3498db; /* Brighter blue for main title */
+
+        }
+        h2 {
+            font-size: 26px;
+            font-weight: 600;
+            color: #34495e; /* Dark blue-gray for section titles */
+            border-bottom: 1px solid #eee; /* Light bottom border for sections */
+        }
+        .header {
+            text-align: center;
+        }
+        .header p {
+            font-size: 16px;
+            color: #7f8c8d;
+        }
+        .invoice-details, .section {
+            margin-bottom: 10px; /* More space between sections */
+        }
+        .invoice-details p, .section p {
+            font-size: 15px;
+            display: flex; /* Use flexbox for aligned labels */
+            align-items: baseline;
+        }
+        .invoice-details strong, .section strong {
+            flex-shrink: 0; /* Prevent label from shrinking */
+            width: 180px; /* Wider label alignment */
+            font-weight: 600;
+            color: #555;
+        }
+        .table-container {
+            margin-top: 30px;
+            border: 1px solid #e0e0e0; /* Light border around table container */
+            border-radius: 8px;
+            overflow: hidden; /* Ensures rounded corners apply to table */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 0; /* Remove bottom margin if container has it */
+        }
+        th, td {
+            border: 1px solid #f0f0f0; /* Lighter border for cells */
+            padding: 15px; /* More padding in cells */
+            text-align: left;
+        }
+        th {
+            background-color: #ecf0f1; /* Light blue-gray header */
+            font-weight: 700;
+            color: #2c3e50;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
+        td {
+            background-color: #ffffff;
+        }
+        .total {
+            text-align: right;
+            font-size: 24px; /* Larger total font */
+            font-weight: 700;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 3px solid #3498db; /* Stronger, colored top border */
+            color: #2c3e50;
+        }
+        .footer {
+            text-align: center;
+            font-size: 13px;
+            color: #95a5a6; /* Softer gray */
+            border-top: 1px solid #eee;
+        }
+        .status-paid {
+            color: #27ae60; /* Green for paid */
+            font-weight: bold;
+        }
+        .status-unpaid {
+            color: #e74c3c; /* Red for unpaid */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Service Booking Invoice</h1>
+        <p>Your trusted partner for vehicle services.</p>
+    </div>
+
+    <div class="invoice-details">
+        <h2>Invoice Information</h2>
+        <p><strong>Invoice ID:</strong> <span th:text="${invoice.invoiceId}">INV001</span></p>
+        <!--        <p><strong>Generation Date:</strong> <span th:text="${invoice.generationDate}">2025-07-10</span></p>-->
+        <p><strong>Payment Status:</strong>
+            <span th:class="${invoice.paymentStatus == 'PAID' ? 'status-paid' : 'status-unpaid'}"
+                  th:text="${invoice.paymentStatus}">UNPAID</span>
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>User Details</h2>
+        <p><strong>Name:</strong> <span th:text="${invoice.userResponse != null ? invoice.userResponse.name : 'N/A'}">John Doe</span></p>
+        <p><strong>Email:</strong> <span th:text="${invoice.userResponse != null ? invoice.userResponse.email : 'N/A'}">john.doe@example.com</span></p>
+    </div>
+
+    <div class="section">
+        <h2>Booking Details</h2>
+        <p><strong>Booking ID:</strong> <span th:text="${invoice.booking != null ? invoice.booking.id : 'N/A'}">BKG001</span></p>
+        <p><strong>Booking Date:</strong> <span th:text="${invoice.booking != null ? invoice.booking.bookingDate : 'N/A'}">2025-07-15</span></p>
+        <p><strong>Booking Status:</strong> <span th:text="${invoice.booking != null ? invoice.booking.status : 'N/A'}">COMPLETED</span></p>
+    </div>
+
+    <div class="section">
+        <h2>Vehicle Details</h2>
+        <p><strong>Model:</strong> <span th:text="${invoice.vehicleResponse != null ? invoice.vehicleResponse.model : 'N/A'}">Civic</span></p>
+        <p><strong>Registration No.:</strong> <span th:text="${invoice.vehicleResponse != null ? invoice.vehicleResponse.registrationNumber : 'N/A'}">MH12AB1234</span></p>
+    </div>
+
+    <div class="section">
+        <h2>Service Details</h2>
+        <p><strong>Service Type:</strong> <span th:text="${invoice.serviceType != null ? invoice.serviceType.description : 'N/A'}">Oil Change</span></p>
+    </div>
+
+    <div class="table-container">
+        <h2>Charges Summary</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Description</th>
+                <th>Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Service Type: <span th:text="${invoice.serviceType != null ? invoice.serviceType.description : 'N/A'}"></span></td>
+                <td>$<span th:text="${invoice.serviceType != null ? #numbers.formatDecimal(invoice.serviceType.price, 0, 2) : '0.00'}">99.99</span></td>
+            </tr>
+            <!-- You can add more line items here if your invoice has them -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="total">
+        Total Amount Due: $<span th:text="${#numbers.formatDecimal(invoice.totalAmount, 0, 2)}">120.00</span>
+    </div>
+
+    <div class="footer">
+        <p>Thank you for your business!</p>
+        <p>Contact us at support@example.com</p>
+        <p>&#169; <span th:text="${#dates.year(#dates.createNow())}">2025</span> Service Booking App. All rights reserved.</p>
+    </div>
+</div>
+</body>
+</html>

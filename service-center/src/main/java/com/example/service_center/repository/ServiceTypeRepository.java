@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface ServiceTypeRepository extends JpaRepository<ServiceType, Long> {
     List<ServiceType> findByServiceCenterId(Long centerId);
+    List<ServiceType> findByServiceCenter(ServiceCenter serviceCenter);
+
 }
 

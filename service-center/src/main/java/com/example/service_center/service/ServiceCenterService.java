@@ -60,6 +60,13 @@ import java.util.Optional;
                  .build();
          return serviceTypeRepository.save(type);
      }
+
+     public List<ServiceType> getServiceTypesByServiceCenterId(Long serviceCenterId) {
+         // Find the service center first to ensure it exists
+         ServiceCenter serviceCenter = serviceCenterRepository.findById(serviceCenterId)
+                 .orElseThrow(() -> new RuntimeException("Service Center not found with ID: " + serviceCenterId));
+         return serviceTypeRepository.findByServiceCenter(serviceCenter); // Adjust based on your ServiceType entity relationship
+     }
   
      public List<ServiceType> getAllServiceTypes() {
          return serviceTypeRepository.findAll();

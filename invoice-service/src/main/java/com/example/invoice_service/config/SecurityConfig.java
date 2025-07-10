@@ -26,7 +26,9 @@ public class SecurityConfig {
             "/v3/api-docs/**",
             "/api/invoices",
             "/api/invoices/{id}/status",
-            "/api/invoices/{id}")
+            "/api/invoices/user/search",
+            "/api/invoices/{id}",
+                    "/api/invoices/{id}/download")
             .permitAll()
             .anyRequest().authenticated()
             .and()

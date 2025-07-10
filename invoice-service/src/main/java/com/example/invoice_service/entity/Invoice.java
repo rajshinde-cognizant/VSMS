@@ -14,6 +14,7 @@ public class Invoice {
     private Long id;
     private Long bookingId;
     private Long serviceTypeId;
+    private String userEmail;
     private Double totalAmount;
     private String paymentStatus;
 }

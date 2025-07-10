@@ -5,9 +5,10 @@ import java.time.LocalDate;
  
 @Data
 public class BookingRequest {
-    private Long userId;
+    private String userEmail;
     private Long vehicleId;
     private Long serviceCenterId;
+    private Long serviceTypeId;
     private LocalDate bookingDate;
     private String status;
 }

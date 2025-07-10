@@ -34,9 +34,9 @@ public class BookingController {
         return response != null ? ResponseEntity.ok(response) : ResponseEntity.notFound().build();
     }
  
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<List<BookingResponse>> getBookingsByUserId(@PathVariable Long userId) {
-        return ResponseEntity.ok(bookingService.getBookingsByUserId(userId));
+    @GetMapping("/user/search")
+    public ResponseEntity<List<BookingResponse>> getBookingsByUserId(@RequestParam("email") String userEmail) {
+        return ResponseEntity.ok(bookingService.getBookingsByUserId(userEmail));
     }
  
     @PutMapping("/{id}")

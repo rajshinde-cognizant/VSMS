@@ -23,9 +23,10 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
  
-    private Long userId;
+    private String userEmail;
     private Long vehicleId;
     private Long serviceCenterId;
+    private Long serviceTypeId;
     private LocalDate bookingDate;
     private String status; // e.g. PENDING, CONFIRMED, CANCELLED
 }

@@ -53,6 +53,13 @@ public class ServiceCenterController {
         log.info("Fetching service center with ID: {}", id);
         return ResponseEntity.ok(serviceCenterService.getServiceCenterById(id));
     }
+
+    @GetMapping("/{id}/service-types")
+    public ResponseEntity<List<ServiceType>> getServiceTypesByServiceCenterId(@PathVariable Long id) {
+        log.info("Fetching service types for service center ID: {}", id);
+        List<ServiceType> serviceTypes = serviceCenterService.getServiceTypesByServiceCenterId(id);
+        return ResponseEntity.ok(serviceTypes);
+    }
  
     @PostMapping("/{id}/mechanics")
     public ResponseEntity<Mechanic> addMechanic(@RequestHeader("Authorization") String authHeader,
