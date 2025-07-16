@@ -27,7 +27,7 @@ The **Vehicle Service Booking System** is a full-stack web application that allo
 - Manage service centers and available services, and
 - Handle billing and invoice generation.
 
-It supports modular microservice architecture and is developed using Java (Spring Boot) or ASP.NET Core for backend, and Angular or React for the frontend. The database layer is built on top of MySQL/PostgreSQL.
+It supports modular microservice architecture and is developed using Java (Spring Boot) or ASP.NET Core for, and Angular or React for the frontend. The database layer is built on top of MySQL/PostgreSQL.
 
 ---
 
@@ -66,32 +66,32 @@ Each module is designed to be modular and self-contained, managing its own respo
 
 These are the core modules essential for running the Vehicle Service Booking System.
 
-### [User Management Module](./backend/UserService/README.md)
+### [User Management Module](./user-service/README.md)
 - Handles user registration, login, profile updates, and service history tracking.
 - **Entities**: `User (UserID, Name, Email, Phone, Address, PasswordHash)`
 
 ---
 
-### [Vehicle Management Module](./backend/VehicleService/README.md)
+### [Vehicle Management Module](./vehicle-service/README.md)
 - Allows users to register, update, and manage their vehicles, linked to their profile.
 - **Entities**: `Vehicle (VehicleID, UserID, Make, Model, Year, RegistrationNumber)`
 
 ---
 
-### [Service Booking Module](./backend/BookingService/README.md)
+### [Service Booking Module](./booking-service/README.md)
 - Facilitates service appointment booking, rescheduling, cancellation, and status tracking.
 - **Entities**: `Booking (BookingID, UserID, VehicleID, ServiceCenterID, Date, TimeSlot, Status)`
 
 ---
 
-### [Service Center Management Module](./backend/ServiceCenterService/README.md)
+### [Service Center Management Module](./service-center/README.md)
 - Manages service centers, assigned mechanics, and available service types.
 - **Entities**:
   - `ServiceCenter (ServiceCenterID, Name, Location, Contact)`
   - `Mechanic (MechanicID, ServiceCenterID, Name, Expertise)`
   - `ServiceType (ServiceTypeID, Description, Price)`
 
-### [Invoice and Billing Module](./backend/InvoiceService/README.md)
+### [Invoice and Billing Module](./invoice-service/README.md)
 - Generates invoices after service completion and tracks payment status.
 - **Entities**: `Invoice (InvoiceID, BookingID, ServiceTypeID, TotalAmount, PaymentStatus)`
 
@@ -190,7 +190,7 @@ Once complete, your system will have the following databases ready:
 
 Update the database connection properties in:
 
-`backend/src/main/resources/application.properties`
+/src/main/resources/application.properties`
 
 ```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/vsbsdb
@@ -206,7 +206,7 @@ spring.jpa.hibernate.ddl-auto=update
 #### 1. Start Backend
 
 ```bash
-cd backend
+cd
 mvn spring-boot:run
 ```
 
@@ -229,7 +229,7 @@ npm start
 
 ## Testing
 
-Run backend unit tests:
+Run unit tests:
 
 ```bash
 mvn test
